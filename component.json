@@ -1,0 +1,9 @@
+{
+    "name": "pages.js",
+    "version": "0.0.1",
+    "author": "Seth Etter",
+    "main": "pages.js"
+    "dependencies": {
+        "jquery": "~1.8.x"
+    }
+}
