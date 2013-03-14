@@ -16,9 +16,9 @@ Include ```pages.js``` in your page and initialize a new Paginator:
 
 The above demonstrates all available options.
 
-```prev``` and ```next``` - classes for the previous and next page links.
-```page_jump_container``` - an ID for the container holding the page jump links.
-```page_jump_separator``` - string used to separate page jump links.
+- ```prev``` and ```next``` - classes for the previous and next page links.
+- ```page_jump_container``` - an ID for the container holding the page jump links.
+- ```page_jump_separator``` - string used to separate page jump links.
 
 ## Todos
 - Remove jQuery dependency
