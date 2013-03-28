@@ -18,14 +18,14 @@ var Paginator = function(options) {
 
     // Construct the pages
     for (var i = 0; i < count; i++) {
-        if (i % P.per_page === 0) page_count++;
-        $(items[i+j]).addClass("page"+page_count);
+        if ((i%P.per_page) === 0) page_count++;
+        $(items[i]).addClass("page"+page_count);
     }
 
     // Build the page jump list
-    for (var ii = 1; ii < pages; ii++) {
+    for (var ii = 1; ii < page_count+1; ii++) {
         $(page_jump_container).append("<a href='#'>" + ii + "</a>");
-        if (ii !== pages-1) $(page_jump_container).append(page_jump_separator);
+        if (ii !== page_count) $(page_jump_container).append(page_jump_separator);
     }
 
     page_jump_links = $(page_jump_container + " a");
@@ -49,7 +49,8 @@ var Paginator = function(options) {
 
     $(next).click(function(e) {
         e.preventDefault();
-        if (P.current_page === pages) return false;
+        // TODO - This could break if there is an even amount of items per page.
+        if (P.current_page === page_count) return false;
         
         $("html, body").animate({scrollTop: 0}, 500);
         $(".page"+P.current_page).hide();
