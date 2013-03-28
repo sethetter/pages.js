@@ -5,10 +5,11 @@
 var Paginator = function(options) {
     var P = this;
 
-    var items = $(options.item_class) || $(".post"), pages = 1,
+    var items = $(options.item_class) || $(".post"),
+        page_count = 0,
         count = items.length,
-        prev = $(options.previous)[0] || $(".previous_page")[0],
-        next = $(options.next)[0] || $(".next_page")[0],
+        prev = $(options.prev_id)[0] || $("#previous_page"),
+        next = $(options.next_id)[0] || $("#next_page"),
         page_jump_container = options.page_jump_container || "#page_jump",
         page_jump_separator = options.page_jump_separator || " | ";
 
@@ -16,13 +17,9 @@ var Paginator = function(options) {
     P.current_page = 1;
 
     // Construct the pages
-    var page_count = 1;
-    for (var i = 0; i < count; i+=P.per_page) {
-        var page_items = [];
-        for (var j = 0; j < P.per_page; j++) {
-            $(items[i+j]).addClass("page"+((i+1)-(4*(i/5))));
-        }
-        pages++;
+    for (var i = 0; i < count; i++) {
+        if (i % P.per_page === 0) page_count++;
+        $(items[i+j]).addClass("page"+page_count);
     }
 
     // Build the page jump list
